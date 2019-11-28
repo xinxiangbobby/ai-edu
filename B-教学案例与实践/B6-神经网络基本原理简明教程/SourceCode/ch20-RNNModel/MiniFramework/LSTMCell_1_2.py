@@ -89,27 +89,3 @@ class LSTMCell_1_2(object):
         self.dU = np.concatenate((self.duf, self.dui, self.dug, self.duo), axis=0)
         if self.bias:
             self.db = np.concatenate((self.dbf, self.dbi, self.dbg, self.dbo), axis=0)
-
-class LinearCell_1_2(object):
-    def __init__(self, input_size, output_size, activator=None, bias=True):
-        self.input_size = input_size
-        self.output_size = output_size
-        self.bias = bias
-        self.activator = activator
-
-    def forward(self, x, V, b=None):
-        self.x = x
-        self.batch_size = self.x.shape[0]
-        self.V = V
-        self.b = b if self.bias else np.zeros((self.output_size))
-        self.z = np.dot(x, V) + self.b
-        if self.activator:
-            self.a = self.activator.forward(self.z)
-
-    def backward(self, in_grad):
-        self.dz = in_grad
-        self.dV = np.dot(self.x.T, self.dz)
-        if self.bias:
-            # in the sake of backward in batch
-            self.db = np.sum(self.dz, axis=0, keepdims=True)
-        self.dx = np.dot(self.dz, self.V.T)

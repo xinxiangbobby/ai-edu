@@ -12,6 +12,7 @@ from MiniFramework.ClassificationLayer import *
 from MiniFramework.LossFunction_1_1 import *
 from MiniFramework.TrainingHistory_3_0 import *
 from MiniFramework.LSTMCell_1_2 import *
+from MiniFramework.Linear import *
 
 train_file = "../../data/ch19.train_minus.npz"
 test_file = "../../data/ch19.test_minus.npz"
@@ -37,7 +38,7 @@ class net(object):
         self.linearcell = []
         for i in range(self.times):
             self.lstmcell.append(LSTMCell_1_2(input_size, hidden_size, bias=bias))
-            self.linearcell.append(LinearCell_1_2(hidden_size, output_size, Logistic(), bias=bias))
+            self.linearcell.append(LinearCell(hidden_size, output_size, Logistic(), bias=bias))
 
     def forward(self, X):
         hp = np.zeros((1, self.hidden_size))

@@ -13,6 +13,7 @@ from MiniFramework.LossFunction_1_1 import *
 from MiniFramework.TrainingHistory_3_0 import *
 from MiniFramework.LSTMCell_1_2 import *
 from MiniFramework.GRUCell import *
+from MiniFramework.Linear import *
 
 train_file = "../../data/ch19.train_minus.npz"
 test_file = "../../data/ch19.test_minus.npz"
@@ -37,7 +38,7 @@ class net(object):
         self.linearcell = []
         for i in range(self.times):
             self.grucell.append(GRUCell(input_size, hidden_size))
-            self.linearcell.append(LinearCell_1_2(hidden_size, output_size, Logistic(), bias=False))
+            self.linearcell.append(LinearCell(hidden_size, output_size, Logistic(), bias=False))
 
     def forward(self, X):
         hp = np.zeros((1, self.hidden_size))

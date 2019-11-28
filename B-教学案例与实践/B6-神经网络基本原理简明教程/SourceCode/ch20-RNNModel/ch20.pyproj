@@ -4,8 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>e36e901b-1747-4768-8683-2f4dc5d18c22</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>
-    </StartupFile>
+    <StartupFile>Level4_PoemGenerator.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -37,6 +36,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MiniFramework\Layer.py" />
+    <Compile Include="MiniFramework\Linear.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MiniFramework\LossFunction_1_1.py" />
     <Compile Include="MiniFramework\LSTMCell_1_1.py">
       <SubType>Code</SubType>
